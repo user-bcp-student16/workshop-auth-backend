@@ -8,9 +8,14 @@ Backend Quarkus que autentica usuarios de laboratorio almacenados en SQLite y en
 
 Requisitos: JDK 21 y Maven 3.9+.
 
-```bash
+```powershell
+$env:AUTH_TOKEN_SECRET = "<shared-local-secret>"
 mvn quarkus:dev
 ```
+
+En Bash, usa `export AUTH_TOKEN_SECRET="<shared-local-secret>"` antes de iniciar el servicio.
+
+`AUTH_TOKEN_SECRET` debe configurarse con el mismo valor en Requirements API y contener al menos 32 bytes UTF-8. Usa un secreto local aleatorio y no lo guardes en el repositorio.
 
 Servicio: `http://localhost:8080`
 
@@ -26,4 +31,4 @@ Credenciales locales:
 
 ## Propósito de la rama `main`
 
-La rama contiene deuda técnica y de seguridad deliberada: SQL concatenado, contraseñas en texto plano, token reversible, secreto hardcodeado, CORS permisivo, método largo, manejo genérico de excepciones y dependencias con CVEs.
+La rama conserva deuda técnica y de seguridad deliberada, como contraseñas en texto plano, CORS permisivo, métodos con varias responsabilidades, manejo genérico de excepciones y dependencias con CVEs.
